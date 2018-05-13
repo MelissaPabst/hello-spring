@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 
+// controller and remote lesson
+
 @Controller
 //group routes by functionality
 //RequestMapping at Controller level
