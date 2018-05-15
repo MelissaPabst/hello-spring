@@ -52,6 +52,11 @@ public class HelloController {
 
         String html = "<form method='post'>" +
                 "<input type='text' name='name' />" +
+                "<select name='language'>" +
+                "<option value='English'>English</option>" +
+                "<option value='Spanish'>Spanish</option>" +
+                "<option value='French'>French</option>" +
+                "</select>" +
                 "<input type='submit' value='Greet Me!' />" +
                 "</form>";
 
@@ -74,8 +79,11 @@ public class HelloController {
     public String helloPost(HttpServletRequest request) {
         // key "name" has to match key "name" in form
         String userName = request.getParameter("name");
+        String language = request.getParameter( "language");
 
-        return "Hello " + userName;
+        return createMessage(userName, language);
+
+        //return "Hello " + userName;
     }
 
     //configure url segment to be passed in as data instead of a route
@@ -98,5 +106,17 @@ public class HelloController {
 
     public String goodbye() {
         return "redirect:/";
+    }
+
+    public static String createMessage (String name, String language) {
+        String greeting = "Hello";
+        if (language.equals("French")) {
+            greeting = "Bonjour";
+        } else if (language.equals("Spanish")){
+            greeting = "Hola";
+        } else if (language.equals("English")){
+            greeting = "Hello";
+        }
+        return greeting + ", " + name + "!";
     }
 }
